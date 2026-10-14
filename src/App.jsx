@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 export default function App() {
   const [telemetry, setTelemetry] = useState(null);
   const [lastRefreshed, setLastRefreshed] = useState(null);
-  const defaultApiUrl = 'https://rkws-engine.indiasouthcentral.cloudapp.azure.com/api/telemetry';
+  const defaultApiUrl = typeof window !== 'undefined' && window.location.origin.includes('rkws.in')
+    ? '/api/telemetry'
+    : 'https://binance-demo.rkws.in/api/telemetry';
   const [apiUrl, setApiUrl] = useState(
     () => window.localStorage.getItem('crypto_telemetry_url') || defaultApiUrl
   );
