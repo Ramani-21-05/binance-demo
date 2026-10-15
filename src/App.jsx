@@ -444,12 +444,26 @@ export default function App() {
               borderRadius: 12,
               border: '1px dashed #1e293b'
             }}>
-              <div style={{ fontSize: 26, marginBottom: 8 }}>📡</div>
-              <div style={{ fontSize: 14, fontWeight: 600, color: '#94a3b8' }}>
-                Scanning 40 Binance USDT-M Perpetuals for High-Probability Breakouts
+              <div style={{ fontSize: 28, marginBottom: 10 }}>📡</div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: '#38bdf8', letterSpacing: '0.02em' }}>
+                40-Token Universe Breakout Scanner Active
               </div>
-              <div style={{ fontSize: 12, marginTop: 4, color: '#64748b' }}>
-                Engine daemon cycles every 60 seconds on Azure. Positions trigger when ADX &gt; 25.0 and Relative Strength confirms.
+              <div style={{
+                fontSize: 12,
+                color: '#f8fafc',
+                maxWidth: 720,
+                margin: '12px auto 6px',
+                padding: '10px 16px',
+                background: 'rgba(56, 189, 248, 0.08)',
+                border: '1px solid rgba(56, 189, 248, 0.2)',
+                borderRadius: 8,
+                fontFamily: 'JetBrains Mono, monospace',
+                lineHeight: 1.6
+              }}>
+                {t.scanner?.status_message || 'Monitoring 40 liquid perpetual tokens on 4-Hour timeframe. Standby for qualified breakout momentum.'}
+              </div>
+              <div style={{ fontSize: 11, color: '#64748b', marginTop: 8, fontFamily: 'JetBrains Mono, monospace' }}>
+                Cycle: Scans 40 tokens every 60s · BTC Macro Gate: <span style={{ color: t.btc_macro?.regime === 'BULLISH' ? '#10b981' : '#f59e0b', fontWeight: 700 }}>{t.btc_macro?.regime || 'BEARISH'}</span> · Last Scan: {t.scanner?.last_scan_time ? new Date(t.scanner.last_scan_time).toLocaleTimeString() : 'Just now'}
               </div>
             </div>
           )}
